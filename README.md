@@ -7,7 +7,7 @@
 * **ORM** : JPA
 
 
-### 📝 Log
+## 📝 Log
 * This project was produced for study.
 * Data Base not used
 * 2025.10.20 Project & daDak update
