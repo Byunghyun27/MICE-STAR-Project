@@ -11,7 +11,6 @@ public class PublishController {
     public String publish(Model model) {
         return "publish";
     }
-
 }
 
 

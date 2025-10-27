@@ -20,7 +20,7 @@ public class GlobalControllerAdvice {
         menuitems.add(new Menuitem("출판물", "/publications"));
         menuitems.add(new Menuitem("다닥x행궁", "/dadak"));
         menuitems.add(new Menuitem("아카이브", "/archive"));
-        menuitems.add(new Menuitem("방명록", "/guestbook"));
+//        menuitems.add(new Menuitem("방명록", "/guestbook"));
 
         return menuitems;
     }

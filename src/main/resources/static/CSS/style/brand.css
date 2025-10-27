@@ -9,9 +9,14 @@
 body {
     margin: 0;
     background-color: #000;
-    font-family: Aggravo;
+    font-family: 'Pretendard', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6,
+button,input,
+select{
+    font-family: 'Pretendard', sans-serif;
+}
 
 .box-section {
     display: flex;
