@@ -535,7 +535,7 @@ select {
     height: auto;
     margin: 30px auto;
     /*aspect-ratio: 16 / 10;*/
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     overflow: hidden;
 
     background-color: #000;
