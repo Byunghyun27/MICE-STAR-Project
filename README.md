@@ -12,3 +12,4 @@
 * Data Base not used
 * 2025.10.20 Project & daDak update
 * 2025.10.27 Archive update, font change </p>
+* 2025.10.30 home -> liveSection (url -> webp), 스크롤 컨테이너 해제
