@@ -10,46 +10,75 @@ select {
     font-family: 'Pretendard', sans-serif;
 }
 
-
 /*첫번째 세션*/
-.intro_bg {
-    background: linear-gradient(to bottom, #1E88E5 70%, #ffffff 70%);
-
-    width: 100%;
-    height: 100vh;
+.intro-sections {
+    width: 100vw;
+    height: 80vh;
+    background-color: #1f70ff;
     display: flex;
-    flex-direction: column;
-    color: white;
-}
-
-
-.main-content-wrapper {
-    padding-top: 80px; /* navbar 높이만큼 공간 확보 */
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hero-content {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    overflow: hidden;
+}
+
+.intro-container {
+    width: 80vw;
     max-width: 1400px;
-    margin: 0 auto;
-    padding: 2% 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4vw;
 }
 
-.hero-img img {
-    width: 700px;
-    height: auto;
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%
 }
 
-.hero-logo img {
-    max-width: 200px;
-    width: 100%;
+.intro-img img {
+    width: clamp(800px, 90%, 1200px);
     height: auto;
+    object-fit: contain;
+}
+
+/* 우측 로고 이미지 */
+.intro-logo img {
+    width: clamp(200px, 100%, 400px);
+    height: auto;
+    object-fit: contain;
+    padding-bottom: 100px;
+}
+
+/* 반응형 (태블릿 이하) */
+@media (max-width: 1024px) {
+    .intro-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-img img {
+        width: clamp(300px, 60vw, 600px);
+    }
+
+    .intro-logo img {
+        width: clamp(70px, 12vw, 120px);
+        margin-top: 3vh;
+    }
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+    .intro-img img {
+        width: 80vw;
+    }
+
+    .intro-logo img {
+        width: 20vw;
+    }
 }
 
 
@@ -71,6 +100,27 @@ select {
     height: auto;
     display: block;
 }
+
+
+/* --- 하단 메인 로고 --- */
+.bottom-logo-container {
+    position: relative;
+    padding-bottom: 2%;
+}
+
+.main-logo {
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 25px 30px;
+}
+
+.main-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 
 /******************************/
 /*2 세션*/
@@ -267,7 +317,7 @@ select {
 /******************************/
 .core-section {
     position: relative;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     overflow: hidden;
 }
@@ -288,37 +338,38 @@ select {
     z-index: 2;
     top: 12%;
     left: 15%;
-
     color: #ffffff;
-    font-size: 1.5rem;
     line-height: 1.5;
+
+    /* "Core Value" 텍스트의 반응형 폰트 */
+    font-size: clamp(1.5rem, 2vw, 4rem);
 }
 
 /* "MICE STAR는" 텍스트 스타일 */
 .core-description .line-1 {
     display: block;
-    font-size: 2rem;
     font-weight: bold;
-    margin: 10px 0;
+    font-size: clamp(3rem, 3vw, 5rem);
 }
 
 /* "#가능성" 박스 스타일 */
 .core-description .line-2 {
     display: inline-block;
     border: 1px solid #ffffff;
-
     border-radius: 10px;
     margin: 0 8px 0 0;
-    font-size: 3rem;
     vertical-align: middle;
-
     padding: 1px;
+
+    font-size: clamp(3rem, 3vw, 6rem);
 }
 
+/* "을 비춥니다." 텍스트 스타일 */
 .core-description .line-3 {
-    font-size: 3rem;
     font-weight: 400;
     vertical-align: middle;
+
+    font-size: clamp(3rem, 3vw, 6rem);
 }
 
 .card-content {
@@ -337,7 +388,7 @@ select {
 .info-card {
     position: relative;
     width: 25%;
-    height: 400px;
+    aspect-ratio: 3/4;
     border-radius: 16px;
     overflow: hidden;
     color: #ffffff;
@@ -357,10 +408,7 @@ select {
 }
 
 .info-card:hover {
-    /* 카드를 위로 15px 이동시키고 3% 확대 */
     transform: translateY(-15px) scale(1.03);
-
-    /* 빛나는 효과를 위한 그림자 추가 */
     box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
 }
 
@@ -424,6 +472,8 @@ select {
 .card-content .info-card:nth-child(3).start-animation {
     animation-delay: 0.8s;
 }
+
+
 
 /******************************/
 /*7 세션*/
@@ -505,21 +555,37 @@ select {
     align-items: center;
 
     gap: 30px;
+
+    /* 콘텐츠의 좌우 여백을 위해 추가 (옵션) */
+    box-sizing: border-box;
 }
 
 
 /* 텍스트 콘텐츠 스타일 */
 .text-content {
-    position: relative;
-    top: 10%;
-    right: -7%;
+    /* * 불필요한 position 속성을 제거하고
+     * 부모(.live-section)의 align-items: center로 중앙 정렬합니다.
+     * gap: 30px가 위아래 간격을 담당합니다.
+    */
+    width: 100%; /* 너비를 100%로 설정 */
+
+    /* * .live-content와 동일한 반응형 max-width를 적용하여
+     * 너비를 일치시키고, 이 안에서 text-align: right가 작동하도록 합니다.
+    */
+    max-width: clamp(700px, 55vw, 1100px);
 
     color: #ffffff;
-    font-size: 1.3rem;
+
+    /* 폰트 크기도 clamp()로 반응형 처리 */
+    font-size: clamp(1.3rem, 1.4vw, 1.8rem);
+
     line-height: 1.6;
     text-align: right;
-
     z-index: 2;
+
+    /* padding을 사용해 텍스트가 가장자리에 붙지 않게 처리 (옵션) */
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 
@@ -531,11 +597,12 @@ select {
     align-items: center;
 
     width: 100%;
-    max-width: 700px;
+
+    max-width: clamp(700px, 55vw, 1100px);
+
     height: auto;
-    margin: 30px auto;
-    /*aspect-ratio: 16 / 10;*/
-    /*border-radius: 20px;*/
+
+    margin: 0;
     overflow: hidden;
 
     background-color: #000;
@@ -547,7 +614,6 @@ select {
     object-fit: contain;
     display: block;
 }
-
 
 /******************************/
 /*9 Town card 세션*/
